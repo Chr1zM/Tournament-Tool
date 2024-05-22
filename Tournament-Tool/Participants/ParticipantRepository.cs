@@ -4,13 +4,13 @@ namespace Tournament_Tool.Participants
 {
     public class ParticipantRepository
     {
-        private string _connectionString = "Data Source=tournament.db";
+        private const string ConnectionString = "Data Source=tournament.db";
 
         public List<Participant> GetAllParticipants()
         {
             var participants = new List<Participant>();
 
-            using (var connection = new SQLiteConnection(_connectionString))
+            using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
                 var command = new SQLiteCommand("SELECT * FROM Participants", connection);
@@ -31,7 +31,7 @@ namespace Tournament_Tool.Participants
 
         public void CreateParticipant(Participant participant)
         {
-            using (var connection = new SQLiteConnection(_connectionString))
+            using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
                 var command = new SQLiteCommand("INSERT INTO Participants (Name) VALUES (@Name)", connection);
@@ -42,7 +42,7 @@ namespace Tournament_Tool.Participants
 
         public void UpdateParticipant(Participant participant)
         {
-            using (var connection = new SQLiteConnection(_connectionString))
+            using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
                 var command = new SQLiteCommand("UPDATE Participants SET Name = @Name WHERE Id = @Id", connection);
@@ -54,7 +54,7 @@ namespace Tournament_Tool.Participants
 
         public void DeleteParticipant(int id)
         {
-            using (var connection = new SQLiteConnection(_connectionString))
+            using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
                 var command = new SQLiteCommand("DELETE FROM Participants WHERE Id = @Id", connection);
