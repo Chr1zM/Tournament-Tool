@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:participants="clr-namespace:Tournament_Tool.Participants"
         mc:Ignorable="d" 
-        d:DesignHeight="1000" d:DesignWidth="800"
+        d:DesignHeight="1000" d:DesignWidth="1000"
         Title="ParticipantPage"
         Background="{DynamicResource MaterialDesignPaper}">
     <Page.DataContext>

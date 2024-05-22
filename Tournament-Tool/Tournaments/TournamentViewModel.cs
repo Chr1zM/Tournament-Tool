@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tournament_Tool;
 using Tournament_Tool.Participants;
 
 namespace Tournament_Tool.Tournaments
@@ -12,8 +13,7 @@ namespace Tournament_Tool.Tournaments
     {
         private readonly ParticipantRepository _participantRepository;
         public ObservableCollection<Participant> Participants { get; set; }
-        public ObservableCollection<ParticipantSlot> ParticipantSlots { get; set; }
-        public int GridColumns { get; set; }
+        public ObservableCollection<ObservableCollection<ParticipantSlot>> Rounds { get; set; }
         public TournamentType TournamentType { get; }
 
         public TournamentViewModel(TournamentType tournamentType)
@@ -26,8 +26,18 @@ namespace Tournament_Tool.Tournaments
 
         private void SetupParticipantSlots()
         {
-            ParticipantSlots = [];
-            var numberOfSlots = TournamentType switch
+            Rounds = new ObservableCollection<ObservableCollection<ParticipantSlot>>();
+
+            var numberOfRounds = TournamentType switch
+            {
+                TournamentType.RoundOf32 => 6,
+                TournamentType.RoundOf16 => 5,
+                TournamentType.QuarterFinals => 4,
+                TournamentType.SemiFinals => 3,
+                _ => 0
+            };
+
+            var initialSlots = TournamentType switch
             {
                 TournamentType.RoundOf32 => 32,
                 TournamentType.RoundOf16 => 16,
@@ -36,18 +46,15 @@ namespace Tournament_Tool.Tournaments
                 _ => 0
             };
 
-            GridColumns = TournamentType switch
+            for (int round = 0; round < numberOfRounds; round++)
             {
-                TournamentType.RoundOf32 => 4,
-                TournamentType.RoundOf16 => 4,
-                TournamentType.QuarterFinals => 2,
-                TournamentType.SemiFinals => 2,
-                _ => 1
-            };
-
-            for (int i = 0; i < numberOfSlots; i++)
-            {
-                ParticipantSlots.Add(new ParticipantSlot());
+                var roundSlots = new ObservableCollection<ParticipantSlot>();
+                int slots = round == numberOfRounds - 1 ? 1 : initialSlots / (int)Math.Pow(2, round);
+                for (int i = 0; i < slots; i++)
+                {
+                    roundSlots.Add(new ParticipantSlot());
+                }
+                Rounds.Add(roundSlots);
             }
         }
     }
