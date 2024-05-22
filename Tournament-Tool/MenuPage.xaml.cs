@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tournament_Tool.Participants;
+using Tournament_Tool.Tournaments;
 
 namespace Tournament_Tool
 {
@@ -24,6 +25,11 @@ namespace Tournament_Tool
         public MenuPage()
         {
             InitializeComponent();
+        }
+
+        private void TournamentButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).NavigateToPage(new TournamentPage());
         }
 
         private void EditParticipantsButton_Click(object sender, RoutedEventArgs e)
