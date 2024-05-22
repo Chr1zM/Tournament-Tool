@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tournament_Tool.Main;
 
 namespace Tournament_Tool.Tournaments
 {
@@ -20,9 +21,15 @@ namespace Tournament_Tool.Tournaments
     /// </summary>
     public partial class TournamentPage : Page
     {
-        public TournamentPage()
+        public TournamentPage(TournamentType tournamentType)
         {
             InitializeComponent();
+            DataContext = new TournamentViewModel(tournamentType);
+        }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).NavigateToPage(new MenuPage());
         }
     }
 }

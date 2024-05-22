@@ -10,67 +10,12 @@
       Background="{DynamicResource MaterialDesignPaper}">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- TODO mit Datenbank daten befüllen -->
-        <ComboBox Grid.Row="0" Grid.Column="0" Margin="10" Style="{StaticResource MaterialDesignComboBox}">
-            <ComboBoxItem Content="FC Bayern München"></ComboBoxItem>
-            <ComboBoxItem Content="BVB"></ComboBoxItem>
-            <ComboBoxItem Content="Real Madrid"></ComboBoxItem>
-            <ComboBoxItem Content="FC Barcelona"></ComboBoxItem>
-        </ComboBox>
-        <ComboBox Grid.Row="2" Grid.Column="0" Margin="10" Style="{StaticResource MaterialDesignComboBox}">
-            <ComboBoxItem Content="FC Bayern München"></ComboBoxItem>
-            <ComboBoxItem Content="BVB"></ComboBoxItem>
-            <ComboBoxItem Content="Real Madrid"></ComboBoxItem>
-            <ComboBoxItem Content="FC Barcelona"></ComboBoxItem>
-        </ComboBox>
+        <Button Content="Menü" Width="80" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Click="MenuButton_Click"/>
 
-        <ComboBox Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource MaterialDesignComboBox}">
-            <ComboBoxItem Content="FC Bayern München"></ComboBoxItem>
-            <ComboBoxItem Content="BVB"></ComboBoxItem>
-            <ComboBoxItem Content="Real Madrid"></ComboBoxItem>
-            <ComboBoxItem Content="FC Barcelona"></ComboBoxItem>
-        </ComboBox>
-
-        <Border Grid.Row="1" Grid.Column="2" BorderBrush="Green" BorderThickness="2">
-            <ComboBox Margin="10" Style="{StaticResource MaterialDesignComboBox}">
-                <ComboBoxItem Content="FC Bayern München"></ComboBoxItem>
-                <ComboBoxItem Content="BVB"></ComboBoxItem>
-                <ComboBoxItem Content="Real Madrid"></ComboBoxItem>
-                <ComboBoxItem Content="FC Barcelona"></ComboBoxItem>
-            </ComboBox>
-        </Border>
-
-        <ComboBox Grid.Row="1" Grid.Column="3" Margin="10" Style="{StaticResource MaterialDesignComboBox}">
-            <ComboBoxItem Content="FC Bayern München"></ComboBoxItem>
-            <ComboBoxItem Content="BVB"></ComboBoxItem>
-            <ComboBoxItem Content="Real Madrid"></ComboBoxItem>
-            <ComboBoxItem Content="FC Barcelona"></ComboBoxItem>
-        </ComboBox>
-
-        <ComboBox Grid.Row="0" Grid.Column="4" Margin="10" Style="{StaticResource MaterialDesignComboBox}">
-            <ComboBoxItem Content="FC Bayern München"></ComboBoxItem>
-            <ComboBoxItem Content="BVB"></ComboBoxItem>
-            <ComboBoxItem Content="Real Madrid"></ComboBoxItem>
-            <ComboBoxItem Content="FC Barcelona"></ComboBoxItem>
-        </ComboBox>
-        <ComboBox Grid.Row="2" Grid.Column="4" Margin="10" Style="{StaticResource MaterialDesignComboBox}">
-            <ComboBoxItem Content="FC Bayern München"></ComboBoxItem>
-            <ComboBoxItem Content="BVB"></ComboBoxItem>
-            <ComboBoxItem Content="Real Madrid"></ComboBoxItem>
-            <ComboBoxItem Content="FC Barcelona"></ComboBoxItem>
-        </ComboBox>
     </Grid>
 </Page>

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using Tournament_Tool.Main;
 
 namespace Tournament_Tool.Participants
 {
