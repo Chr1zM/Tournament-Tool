@@ -26,7 +26,29 @@ namespace Tournament_Tool.Tournaments
 
         private void SetupParticipantSlots()
         {
-            // TODO: Implement
+            ParticipantSlots = [];
+            var numberOfSlots = TournamentType switch
+            {
+                TournamentType.RoundOf32 => 32,
+                TournamentType.RoundOf16 => 16,
+                TournamentType.QuarterFinals => 8,
+                TournamentType.SemiFinals => 4,
+                _ => 0
+            };
+
+            GridColumns = TournamentType switch
+            {
+                TournamentType.RoundOf32 => 4,
+                TournamentType.RoundOf16 => 4,
+                TournamentType.QuarterFinals => 2,
+                TournamentType.SemiFinals => 2,
+                _ => 1
+            };
+
+            for (int i = 0; i < numberOfSlots; i++)
+            {
+                ParticipantSlots.Add(new ParticipantSlot());
+            }
         }
     }
 

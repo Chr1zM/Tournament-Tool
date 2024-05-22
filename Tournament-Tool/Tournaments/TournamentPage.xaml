@@ -17,5 +17,23 @@
 
         <Button Content="Menü" Width="80" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Click="MenuButton_Click"/>
 
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding ParticipantSlots}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="{Binding GridColumns}" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Margin="10">
+                            <ComboBox Width="200" ItemsSource="{Binding Participants, RelativeSource={RelativeSource AncestorType=Page}}"
+                                      DisplayMemberPath="Name" SelectedValuePath="Id" SelectedItem="{Binding Participant}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
     </Grid>
 </Page>
