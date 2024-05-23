@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tournament_Tool.Main;
+using Tournament_Tool.Participants;
 
 namespace Tournament_Tool.Tournaments
 {
@@ -141,11 +142,15 @@ namespace Tournament_Tool.Tournaments
         private void ShuffleParticipants(TournamentViewModel viewModel)
         {
             var random = new Random();
+            var availableParticipants = new List<Participant>(viewModel.Participants);
 
             foreach (var slot in viewModel.Rounds.FirstOrDefault())
             {
-                var participantIndex = random.Next(viewModel.Participants.Count);
-                slot.Participant = viewModel.Participants[participantIndex];
+                if (availableParticipants.Count == 0) break;
+
+                var participantIndex = random.Next(availableParticipants.Count);
+                slot.Participant = availableParticipants[participantIndex];
+                availableParticipants.RemoveAt(participantIndex);
             }
         }
 

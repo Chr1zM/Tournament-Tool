@@ -28,7 +28,7 @@ namespace Tournament_Tool.Tournaments
 
         private void SetupParticipantSlots()
         {
-            Rounds = new ObservableCollection<ObservableCollection<ParticipantSlot>>();
+            Rounds = [];
 
             var numberOfRounds = TournamentType switch
             {
