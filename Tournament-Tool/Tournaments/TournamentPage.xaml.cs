@@ -46,13 +46,14 @@ namespace Tournament_Tool.Tournaments
             var initialSlots = viewModel.Rounds[0].Count;
 
 
-            var gridHeight = viewModel.TournamentType == TournamentType.RoundOf32 ? new GridLength(28) : new GridLength(1, GridUnitType.Star);
-            var comboboxHeight = viewModel.TournamentType == TournamentType.RoundOf32 ? 25 : 30;
+            var gridHeight = viewModel.TournamentType == TournamentType.RoundOf32 ? new GridLength(30) : new GridLength(1, GridUnitType.Star);
+            var comboboxHeight = viewModel.TournamentType == TournamentType.RoundOf32 ? 28 : 30;
+            var fontSize = viewModel.TournamentType == TournamentType.RoundOf32 ? 10 : 14;
 
             // Define columns
             for (int col = 0; col < rounds; col++)
             {
-                TournamentGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(200) });
+                TournamentGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(240) });
             }
 
             // Define rows
@@ -74,11 +75,12 @@ namespace Tournament_Tool.Tournaments
                     {
                         Width = 200,
                         Height = comboboxHeight,
+                        FontSize = fontSize,
                         ItemsSource = viewModel.Participants,
                         DisplayMemberPath = "Name",
                         SelectedValuePath = "Id",
                         DataContext = roundSlots[slot],
-                        Margin = new Thickness(10)
+                        Margin = new Thickness(10),
                     };
                     BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, new Binding("Participant"));
 
