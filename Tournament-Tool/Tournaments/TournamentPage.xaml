@@ -15,7 +15,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Content="Menü" Width="80" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Click="MenuButton_Click"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Menü" Width="100" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Click="MenuButton_Click"/>
+            <Button Content="Speichern" Width="100" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Click="SaveButton_Click"/>
+            <Button Content="Laden" Width="100" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Click="LoadButton_Click"/>
+        </StackPanel>
 
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <Grid x:Name="TournamentGrid" Margin="10" HorizontalAlignment="Center">

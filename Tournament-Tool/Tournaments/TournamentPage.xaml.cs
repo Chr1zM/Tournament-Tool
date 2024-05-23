@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,9 +61,6 @@ namespace Tournament_Tool.Tournaments
                 TournamentGrid.RowDefinitions.Add(new RowDefinition { Height = gridHeight });
             }
 
-
-
-
             // Add Comboboxes
             for (int round = 0; round < rounds; round++)
             {
@@ -90,6 +88,44 @@ namespace Tournament_Tool.Tournaments
 
                     TournamentGrid.Children.Add(comboBox);
                 }
+            }
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog
+            {
+                Filter = "JSON files (*.json)|*.json",
+                Title = "Save Tournament"
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                var viewModel = DataContext as TournamentViewModel;
+                viewModel?.SaveTournament(saveFileDialog.FileName);
+            }
+        }
+
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog
+            {
+                Filter = "JSON files (*.json)|*.json",
+                Title = "Load Tournament"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var tournament = TournamentViewModel.LoadTournament(openFileDialog.FileName);
+
+                if (tournament == null)
+                {
+                    MainErrors.ShowTournamentLoadError();
+                    return;
+                }
+
+                DataContext = tournament;
+                SetupGrid();
             }
         }
 
