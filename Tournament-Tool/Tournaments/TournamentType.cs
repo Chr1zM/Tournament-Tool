@@ -17,8 +17,6 @@ namespace Tournament_Tool.Tournaments
         QuarterFinals,
         [Description("Halbfinale")]
         SemiFinals
-
-
     }
 
     public static class TournamentTypeExtensions

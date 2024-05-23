@@ -17,39 +17,10 @@
 
         <Button Content="Menü" Width="80" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Click="MenuButton_Click"/>
 
-        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto">
-            <ItemsControl ItemsSource="{Binding Rounds}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <ItemsControl ItemsSource="{Binding}">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" />
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <ComboBox Width="200" 
-                                                  ItemsSource="{Binding DataContext.Participants, RelativeSource={RelativeSource AncestorType=Page}}"
-                                                  DisplayMemberPath="Name" SelectedValuePath="Id" 
-                                                  SelectedItem="{Binding Participant}" Margin="10"/>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid x:Name="TournamentGrid" Margin="10" HorizontalAlignment="Center">
+                <!-- The rows and columns will be added dynamically in the code-behind -->
+            </Grid>
         </ScrollViewer>
     </Grid>
 </Page>
