@@ -49,7 +49,7 @@ namespace Tournament_Tool.Tournaments
             for (int round = 0; round < numberOfRounds; round++)
             {
                 var roundSlots = new ObservableCollection<ParticipantSlot>();
-                int slots = round == numberOfRounds - 1 ? 1 : initialSlots / (int)Math.Pow(2, round);
+                var slots = round == numberOfRounds - 1 ? 1 : initialSlots / (int)Math.Pow(2, round);
                 for (int i = 0; i < slots; i++)
                 {
                     roundSlots.Add(new ParticipantSlot());
