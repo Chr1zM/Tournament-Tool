@@ -19,6 +19,7 @@
             <Button Content="Menü" Width="100" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Click="MenuButton_Click"/>
             <Button Content="Speichern" Width="100" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Click="SaveButton_Click"/>
             <Button Content="Laden" Width="100" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Click="LoadButton_Click"/>
+            <Button Content="Mischen" Width="100" Height="30" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Left" Click="ShuffleButton_Click"/>
         </StackPanel>
 
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">

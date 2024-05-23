@@ -129,6 +129,25 @@ namespace Tournament_Tool.Tournaments
             }
         }
 
+        private void ShuffleButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is not TournamentViewModel viewModel) return;
+
+            ShuffleParticipants(viewModel);
+        }
+
+        private void ShuffleParticipants(TournamentViewModel viewModel)
+        {
+            var random = new Random();
+
+            foreach (var slot in viewModel.Rounds.FirstOrDefault())
+            {
+                var participantIndex = random.Next(viewModel.Participants.Count);
+                slot.Participant = viewModel.Participants[participantIndex];
+            }
+        }
+
+
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).NavigateToPage(new MenuPage());
