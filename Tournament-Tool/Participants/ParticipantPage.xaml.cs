@@ -29,7 +29,7 @@ namespace Tournament_Tool.Participants
         {
             var participant = (Participant)((Button)sender).DataContext;
             var viewModel = (ParticipantViewModel)DataContext;
-            viewModel.ChangeParticipantName(participant);
+            viewModel.UpdateParticipant(participant);
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

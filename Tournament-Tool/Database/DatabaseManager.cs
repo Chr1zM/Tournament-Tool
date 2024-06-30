@@ -14,7 +14,7 @@ namespace Tournament_Tool.Database
             using (var connection = new SQLiteConnection("Data Source=tournament.db"))
             {
                 connection.Open();
-                var command = new SQLiteCommand("CREATE TABLE IF NOT EXISTS Participants (Id INTEGER PRIMARY KEY, Name TEXT UNIQUE)", connection);
+                var command = new SQLiteCommand("CREATE TABLE IF NOT EXISTS Participants (Id INTEGER PRIMARY KEY, Name TEXT UNIQUE, Rating INTEGER NOT NULL)", connection);
                 command.ExecuteNonQuery();
             }
         }

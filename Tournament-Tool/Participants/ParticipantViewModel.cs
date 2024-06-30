@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data.SQLite;
 using System.Diagnostics;
+using System.Windows.Media;
 
 namespace Tournament_Tool.Participants
 {
@@ -20,6 +21,12 @@ namespace Tournament_Tool.Participants
         {
             get => _newParticipantName;
             set { _newParticipantName = value; OnPropertyChanged(); }
+        }
+        private int _newParticipantRating;
+        public int NewParticipantRating
+        {
+            get => _newParticipantRating;
+            set { _newParticipantRating = value; OnPropertyChanged(); }
         }
 
         public ParticipantViewModel()
@@ -43,7 +50,8 @@ namespace Tournament_Tool.Participants
                         Participants.Add(new Participant
                         {
                             Id = reader.GetInt32(0),
-                            Name = reader.GetString(1)
+                            Name = reader.GetString(1),
+                            Rating = reader.GetInt32(2)
                         });
                     }
                 }
@@ -60,7 +68,11 @@ namespace Tournament_Tool.Participants
 
             try
             {
-                var newParticipant = new Participant { Name = NewParticipantName };
+                var newParticipant = new Participant
+                {
+                    Name = NewParticipantName,
+                    Rating = NewParticipantRating
+                };
                 _repository.CreateParticipant(newParticipant);
                 Participants.Add(newParticipant);
                 NewParticipantName = string.Empty;
@@ -72,7 +84,7 @@ namespace Tournament_Tool.Participants
             }
         }
 
-        public void ChangeParticipantName(Participant participant)
+        public void UpdateParticipant(Participant participant)
         {
             if (string.IsNullOrWhiteSpace(participant.Name))
             {

@@ -21,7 +21,8 @@ namespace Tournament_Tool.Participants
                         participants.Add(new Participant
                         {
                             Id = reader.GetInt32(0),
-                            Name = reader.GetString(1)
+                            Name = reader.GetString(1),
+                            Rating = 0
                         });
                     }
                 }
@@ -34,8 +35,9 @@ namespace Tournament_Tool.Participants
             using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
-                var command = new SQLiteCommand("INSERT INTO Participants (Name) VALUES (@Name)", connection);
+                var command = new SQLiteCommand("INSERT INTO Participants (Name, Rating) VALUES (@Name, @Rating)", connection);
                 command.Parameters.AddWithValue("@Name", participant.Name);
+                command.Parameters.AddWithValue("@Rating", participant.Rating);
                 command.ExecuteNonQuery();
             }
         }
@@ -45,8 +47,9 @@ namespace Tournament_Tool.Participants
             using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
-                var command = new SQLiteCommand("UPDATE Participants SET Name = @Name WHERE Id = @Id", connection);
+                var command = new SQLiteCommand("UPDATE Participants SET Name = @Name, Rating = @Rating WHERE Id = @Id", connection);
                 command.Parameters.AddWithValue("@Name", participant.Name);
+                command.Parameters.AddWithValue("@Rating", participant.Rating);
                 command.Parameters.AddWithValue("@Id", participant.Id);
                 command.ExecuteNonQuery();
             }
